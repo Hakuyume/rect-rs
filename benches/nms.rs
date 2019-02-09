@@ -1,5 +1,4 @@
 #![feature(test)]
-
 extern crate test;
 
 use rand::{distributions::Uniform, thread_rng, Rng};
