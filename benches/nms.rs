@@ -2,14 +2,24 @@
 
 extern crate test;
 
-use rand::random;
+use rand::{distributions::Uniform, thread_rng, Rng};
 use rect::{non_maximum_suppression, Rect};
 use test::Bencher;
 
 #[bench]
 fn bench_non_maximum_suppression(b: &mut Bencher) {
+    let mut rng = thread_rng();
     let rects: Vec<_> = (0..10000)
-        .map(|_| R(random(), random(), random(), random()))
+        .map(|_| {
+            let canvas = (480., 640.);
+            let edge = Uniform::new(10., 400.);
+
+            let height = rng.sample(edge);
+            let width = rng.sample(edge);
+            let top = rng.sample(Uniform::new(0., canvas.0 - height));
+            let left = rng.sample(Uniform::new(0., canvas.1 - width));
+            R(top, left, top + height, left + width)
+        })
         .collect();
     b.iter(|| {
         let mut rects = rects.clone();
