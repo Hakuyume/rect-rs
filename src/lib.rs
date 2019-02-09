@@ -1,3 +1,5 @@
+mod nms;
 mod rect;
 
-use self::rect::Rect;
+pub use self::nms::non_maximum_suppression;
+pub use self::rect::Rect;
