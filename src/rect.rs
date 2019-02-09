@@ -65,15 +65,12 @@ where
     fn top(&self) -> T {
         self.0.clone()
     }
-
     fn left(&self) -> T {
         self.1.clone()
     }
-
     fn bottom(&self) -> T {
         self.2.clone()
     }
-
     fn right(&self) -> T {
         self.3.clone()
     }

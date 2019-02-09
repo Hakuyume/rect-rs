@@ -48,15 +48,12 @@ impl Rect<f32> for R {
     fn top(&self) -> f32 {
         self.0
     }
-
     fn left(&self) -> f32 {
         self.1
     }
-
     fn bottom(&self) -> f32 {
         self.2
     }
-
     fn right(&self) -> f32 {
         self.3
     }
@@ -65,15 +62,12 @@ impl Rect<f32> for &R {
     fn top(&self) -> f32 {
         self.0
     }
-
     fn left(&self) -> f32 {
         self.1
     }
-
     fn bottom(&self) -> f32 {
         self.2
     }
-
     fn right(&self) -> f32 {
         self.3
     }
