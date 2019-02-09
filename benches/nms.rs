@@ -7,7 +7,7 @@ use test::Bencher;
 
 #[bench]
 fn bench_non_maximum_suppression(b: &mut Bencher) {
-    let rects = make_rects();
+    let rects = setup();
     b.iter(|| {
         let mut rects = rects.clone();
         non_maximum_suppression(&mut rects, 0.5);
@@ -17,7 +17,7 @@ fn bench_non_maximum_suppression(b: &mut Bencher) {
 
 #[bench]
 fn bench_non_maximum_suppression_by_key(b: &mut Bencher) {
-    let rects = make_rects();
+    let rects = setup();
     let indices: Vec<_> = (0..rects.len()).collect();
     b.iter(|| {
         let mut indices = indices.clone();
@@ -26,7 +26,7 @@ fn bench_non_maximum_suppression_by_key(b: &mut Bencher) {
     });
 }
 
-fn make_rects() -> Vec<R> {
+fn setup() -> Vec<R> {
     let mut rng = thread_rng();
     (0..10000)
         .map(|_| {
